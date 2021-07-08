@@ -1,6 +1,6 @@
-# Golang Telegram BOT with AWS lambda boilerplate
+# Golang Telegram BOT with AWS lambda boilerplate and Heroku PostgresDB
 
-Telegram BOT boilerplate is a bot with heroku PostgresDB and simple PostgresDB connection possibility.
+Telegram BOT boilerplate is a bot with heroku PostgresDB and simple PostgresDB connection and deploying to AWS lambda possibility.
 
 ## Installation
 
