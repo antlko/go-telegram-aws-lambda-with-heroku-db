@@ -31,6 +31,7 @@ func getHerokuConfigURLByPostgresID() (*pgx.ConnConfig, error) {
 	}
 	request.Header.Set("Accept", "application/vnd.heroku+json; version=3")
 	request.Header.Set("Authorization", fmt.Sprintf("Bearer %s", os.Getenv("HEROKU_API_KEY")))
+
 	c := http.Client{
 		Timeout: 10 * time.Second,
 	}
@@ -48,6 +49,7 @@ func parseHerokuGetConnResponse(resp *http.Response) (*pgx.ConnConfig, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	var urlData []DBHerokuUrl
 	err = json.Unmarshal(bodyBytes, &urlData)
 	if err != nil {
