@@ -48,7 +48,7 @@ Other information here
 # Local usage
 
 ```bash
-go run app_local/main.go
+go run applocal/main.go
 ```
 
 # Deploy to AWS lambda
