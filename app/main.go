@@ -20,10 +20,10 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	lambda.Start(HandlerBotWebhook)
+	lambda.Start(BotWebhookHandler)
 }
 
-func HandlerBotWebhook(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+func BotWebhookHandler(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	var u bot.Update
 	if err := json.Unmarshal([]byte(req.Body), &u); err == nil {
 		tgBot.ProcessUpdate(u)
