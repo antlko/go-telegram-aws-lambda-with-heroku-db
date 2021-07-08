@@ -1,0 +1,29 @@
+service: s-tgapp
+useDotenv: true
+configValidationMode: error
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: go1.x
+  lambdaHashingVersion: 20201221
+
+package:
+  patterns:
+    - ./bin/**
+
+functions:
+  webhook:
+    handler: bin/app
+    environment:
+      API_TOKEN: ${env:API_TOKEN}
+      HEROKU_IS_ACTIVE: ${env:HEROKU_IS_ACTIVE}
+      HEROKU_API_KEY: ${env:HEROKU_API_KEY}
+      HEROKU_POSTGRES_ID: ${env:HEROKU_POSTGRES_ID}
+      DB_MAX_IDLE_CONNS: ${env:DB_MAX_IDLE_CONNS}
+      DB_MAX_OPEN_CONNS: ${env:DB_MAX_OPEN_CONNS}
+    events:
+      - httpApi:
+          path: /webhook
+          method: POST
